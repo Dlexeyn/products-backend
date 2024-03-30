@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,7 +62,7 @@ public class ProductsController {
                     content = {@Content(schema = @Schema())})
     })
     @PostMapping
-    public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto) {
+    public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductDto productDto) {
         ProductDto savedProduct = productService.createProduct(productDto);
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
@@ -79,7 +80,7 @@ public class ProductsController {
                     content = {@Content(schema = @Schema())})
     })
     @PutMapping("{id}")
-    public ResponseEntity<ProductDto> updateProduct(@PathVariable("id") UUID id, @RequestBody ProductDto updatedProductDto) {
+    public ResponseEntity<ProductDto> updateProduct(@PathVariable("id") UUID id, @Valid @RequestBody ProductDto updatedProductDto) {
         ProductDto updateProduct = productService.updateProduct(id, updatedProductDto);
         return new ResponseEntity<>(updateProduct, HttpStatus.OK);
     }
