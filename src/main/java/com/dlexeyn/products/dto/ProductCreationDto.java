@@ -1,6 +1,6 @@
 package com.dlexeyn.products.dto;
 
-import jakarta.persistence.Column;
+import com.dlexeyn.products.util.UniqueArticle;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class ProductCreationDto {
-    @Column(unique = true)
+    @UniqueArticle
     @NotBlank(message = "The article is required.")
     private String article;
 
