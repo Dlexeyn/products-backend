@@ -36,11 +36,11 @@ public class Product {
     @Column(name = "price")
     private Long price;
 
-    @Column(name = "createdAt")
+    @Column(name = "created_at")
     @CreationTimestamp
     private String createdAt;
 
-    @Column(name = "updatedAt")
+    @Column(name = "updated_at")
     @UpdateTimestamp
     private String updatedAt;
 }

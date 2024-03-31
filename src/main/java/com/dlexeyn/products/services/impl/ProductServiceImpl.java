@@ -1,5 +1,6 @@
 package com.dlexeyn.products.services.impl;
 
+import com.dlexeyn.products.dto.ProductCreationDto;
 import com.dlexeyn.products.dto.ProductDto;
 import com.dlexeyn.products.exception.ResourceNotFoundException;
 import com.dlexeyn.products.mapper.ProductMapper;
@@ -19,7 +20,7 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
     @Override
-    public ProductDto createProduct(ProductDto productDto) {
+    public ProductDto createProduct(ProductCreationDto productDto) {
         Product product = ProductMapper.mapToProduct(productDto);
         Product saveProduct = productRepository.save(product);
         return ProductMapper.mapToProductDto(saveProduct);
@@ -44,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDto updateProduct(UUID id, ProductDto updatedProductDto) {
+    public ProductDto updateProduct(UUID id, ProductCreationDto updatedProductDto) {
         Product productToUpdate = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Product to update with id: " + id + " is not Exist!"

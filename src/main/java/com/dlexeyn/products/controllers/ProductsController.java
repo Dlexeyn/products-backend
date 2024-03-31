@@ -1,5 +1,6 @@
 package com.dlexeyn.products.controllers;
 
+import com.dlexeyn.products.dto.ProductCreationDto;
 import com.dlexeyn.products.dto.ProductDto;
 import com.dlexeyn.products.services.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -62,7 +63,7 @@ public class ProductsController {
                     content = {@Content(schema = @Schema())})
     })
     @PostMapping
-    public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductDto productDto) {
+    public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductCreationDto productDto) {
         ProductDto savedProduct = productService.createProduct(productDto);
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
@@ -80,7 +81,7 @@ public class ProductsController {
                     content = {@Content(schema = @Schema())})
     })
     @PutMapping("{id}")
-    public ResponseEntity<ProductDto> updateProduct(@PathVariable("id") UUID id, @Valid @RequestBody ProductDto updatedProductDto) {
+    public ResponseEntity<ProductDto> updateProduct(@PathVariable("id") UUID id, @Valid @RequestBody ProductCreationDto updatedProductDto) {
         ProductDto updateProduct = productService.updateProduct(id, updatedProductDto);
         return new ResponseEntity<>(updateProduct, HttpStatus.OK);
     }
