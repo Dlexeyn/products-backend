@@ -14,6 +14,7 @@
 	<name>products-backend</name>
 	<description>Test project for MediaSoft</description>
 	<properties>
+		<start-class>com.dlexeyn.products.ProductsBackendApplication</start-class>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
@@ -64,6 +65,9 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<mainClass>com.dlexeyn.products.ProductsBackendApplication</mainClass>
+					<layout>JAR</layout>
+					<executable>true</executable>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
@@ -71,6 +75,13 @@
 						</exclude>
 					</excludes>
 				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
