@@ -25,4 +25,11 @@ public class ValidationExceptionHandler {
 
         return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(InvalidArgumentException.class)
+    public ResponseEntity<?> notValidArgument(InvalidArgumentException ex) {
+        List<String> result = new ArrayList<>();
+        result.add(ex.getMessage());
+        return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+    }
 }
