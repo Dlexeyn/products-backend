@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "34e8d98d-b4c5-4e49-8291-5305ccedf6bc",
+		"name": "Product-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29852646"
+	},
+	"item": [
+		{
+			"name": "add first product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Поле 'id' присутствует в ответе\", function () {",
+							"    pm.response.to.have.status(201);",
+							"    var responseBody = pm.response.json(); ",
+							"    pm.expect(responseBody).to.have.property('id'); ",
+							"",
+							"    pm.collectionVariables.set(\"FirstID\", responseBody.id);",
+							"    ",
+							"    console.log(pm.collectionVariables.get(\"FirstID\"));",
+							"    ",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"article\": \"1123461\",\n    \"title\": \"Asus ZenBook M134\",\n    \"category\": \"Electronic\",\n    \"price\": \"40005\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}products",
+					"host": [
+						"{{BASE_URL}}products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add second product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Поле 'id' присутствует в ответе\", function () {",
+							"    pm.response.to.have.status(201);",
+							"    var responseBody = pm.response.json(); ",
+							"    pm.expect(responseBody).to.have.property('id'); ",
+							"",
+							"    pm.collectionVariables.set(\"SecondID\", responseBody.id);",
+							"    ",
+							"    console.log(pm.collectionVariables.get(\"SecondID\"));",
+							"    ",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"article\": \"3412314421\",\n    \"title\": \"Apple MacBook PRO 2023\",\n    \"category\": \"Electronic\",\n    \"price\": \"400040\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}products",
+					"host": [
+						"{{BASE_URL}}products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get first product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}products/{{FirstID}}",
+					"host": [
+						"{{BASE_URL}}products"
+					],
+					"path": [
+						"{{FirstID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get second product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}products/{{SecondID}}",
+					"host": [
+						"{{BASE_URL}}products"
+					],
+					"path": [
+						"{{SecondID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    console.log(pm.collectionVariables.get(\"FirstID\"));",
+							"    console.log(pm.collectionVariables.get(\"SecondID\"));",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}products",
+					"host": [
+						"{{BASE_URL}}products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update first product (correct)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Успешное обновление\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var responseBody = pm.response.json();    ",
+							"    pm.expect(responseBody).to.have.property('id');",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"article\": \"1123461\",\n    \"title\": \"Asus ZenBook M134\",\n    \"category\": \"Electronic\",\n    \"price\": \"50000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}products/{{FirstID}}",
+					"host": [
+						"{{BASE_URL}}products"
+					],
+					"path": [
+						"{{FirstID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update first product (incorrect)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Проверка на существующий артикул\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"article\": \"3412314421\",\n    \"title\": \"Asus ZenBook M134\",\n    \"category\": \"Electronic\",\n    \"price\": \"50000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}products/{{FirstID}}",
+					"host": [
+						"{{BASE_URL}}products"
+					],
+					"path": [
+						"{{FirstID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete first product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}products/{{FirstID}}",
+					"host": [
+						"{{BASE_URL}}products"
+					],
+					"path": [
+						"{{FirstID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete second product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}products/{{SecondID}}",
+					"host": [
+						"{{BASE_URL}}products"
+					],
+					"path": [
+						"{{SecondID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:8080/",
+			"type": "string"
+		},
+		{
+			"key": "SecondID",
+			"value": ""
+		},
+		{
+			"key": "FirstID",
+			"value": ""
+		}
+	]
+}
