@@ -12,6 +12,8 @@ public class ProductMapper {
                 .setTitle(product.getTitle())
                 .setPrice(product.getPrice())
                 .setCategory(product.getCategory())
+                .setAmount(product.getAmount())
+                .setDescription(product.getDescription())
                 .setCreatedAt(product.getCreatedAt())
                 .setUpdatedAt(product.getUpdatedAt());
     }
@@ -21,7 +23,9 @@ public class ProductMapper {
                 .setArticle(productDto.getArticle())
                 .setTitle(productDto.getTitle())
                 .setPrice(productDto.getPrice())
-                .setCategory(productDto.getCategory());
+                .setCategory(productDto.getCategory())
+                .setAmount(productDto.getAmount())
+                .setDescription(productDto.getDescription());
     }
 
 }

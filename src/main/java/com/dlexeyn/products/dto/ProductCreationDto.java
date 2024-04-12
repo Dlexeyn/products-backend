@@ -24,4 +24,11 @@ public class ProductCreationDto {
     @NotNull(message = "The price is required.")
     @Min(value = 0, message = "The age must be equal or greater than 0")
     private Long price;
+
+    @NotNull
+    @Min(value = 0, message = "The amount must be greater than 0")
+    private Long amount;
+
+    @Size(max = 200, message = "The description size must be from less or equal than 200")
+    private String description;
 }

@@ -20,6 +20,10 @@ public class ProductDto {
 
     private Long price;
 
+    private Long amount;
+
+    private String description;
+
     private String createdAt;
 
     private String updatedAt;

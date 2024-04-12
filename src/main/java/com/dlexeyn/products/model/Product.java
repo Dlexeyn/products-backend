@@ -34,7 +34,13 @@ public class Product {
     private String category;
 
     @Column(name = "price")
-    private Long price;
+    private long price;
+
+    @Column(name = "amount")
+    private long amount;
+
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "created_at")
     @CreationTimestamp
